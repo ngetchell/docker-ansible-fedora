@@ -1,0 +1,15 @@
+sudo: true
+dist: trusty
+
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+      - docker build -t ansible-fedora .
+      - docker images
+      - docker tag ansible-fedora $DOCKER_USERNAME/ansible-fedora
+      - docker push $DOCKER_USERNAME/ansible-fedora
+
+notifications:
+  email: false
