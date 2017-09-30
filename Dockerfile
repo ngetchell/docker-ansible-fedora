@@ -1,7 +1,6 @@
-FROM centos:latest
+FROM fedora:latest
 
-RUN yum install epel-release -y \
-    && yum install python-pip -y
+RUN dnf install python-pip -y
 
 RUN pip install ansible \
     && rm -rf ~/.cache/*
