@@ -1,6 +1,7 @@
 FROM fedora:latest
 
-RUN dnf install python-pip -y
+RUN dnf install python-pip -y \
+    && dnf clean all
 
 RUN pip install ansible \
                 ansible-lint \
